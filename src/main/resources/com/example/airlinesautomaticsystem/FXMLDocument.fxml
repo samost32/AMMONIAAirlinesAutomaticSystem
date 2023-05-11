@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.airlinesautomaticsystem.FXMLDocumentController">
+   <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="left-form" stylesheets="@loginDesign.css">
+         <Label layoutX="114.0" layoutY="185.0" prefHeight="30.0" prefWidth="73.0" text="AMONIC " textFill="WHITE">
+            <font>
+               <Font name="Tahoma" size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="36.0" layoutY="223.0" prefHeight="30.0" prefWidth="229.0" text="Airlaines Automation System" textFill="WHITE">
+            <font>
+               <Font name="Tahoma" size="18.0" />
+            </font>
+         </Label>
+         <ImageView fitHeight="98.0" fitWidth="280.0" layoutX="11.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@pic.png" />
+         </ImageView>
+      </AnchorPane>
+      <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="300.0" styleClass="right-form" stylesheets="@loginDesign.css">
+         <Label layoutX="72.0" layoutY="103.0" text="С Возвращением!" textFill="#368981">
+            <font>
+               <Font name="Tahoma Bold" size="17.0" />
+            </font>
+         </Label>
+         <TextField fx:id="username" layoutX="40.0" layoutY="144.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Логин" styleClass="textfield" stylesheets="@loginDesign.css" />
+         <PasswordField fx:id="password" layoutX="40.0" layoutY="185.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Пароль" styleClass="textfield" stylesheets="@loginDesign.css" />
+         <Button fx:id="loginBtn" layoutX="40.0" layoutY="238.0" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="Вход" />
+         <Button fx:id="close" layoutX="248.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="58.0" styleClass="close" stylesheets="@loginDesign.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+            <graphic>
+               <FontAwesomeIcon glyphName="CLOSE" size="1.2em" />
+            </graphic>
+         </Button>
+      </AnchorPane>
+   </AnchorPane>
+</StackPane>
