@@ -76,7 +76,7 @@ public class dashboardController implements Initializable {
     private PreparedStatement prepare;
     private ResultSet result;
     private Image image;
-    private final String[] listOffice = {"Abu Dhabi", "Bahrain", "Doha"};
+    private final String[] listOffice = {"Abu Dhabi", "Bahrain", "Doha","Cairo","Riyadh"};
     private ObservableList<employeeData> addEmployeeList;
     private double x = 0;
     private double y = 0;
@@ -86,7 +86,7 @@ public class dashboardController implements Initializable {
         Date date = new Date();
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
-        String sql = "INSERT INTO employee " + "(employee_id,firstName,lastName,gender,phoneNum,position,image,date) " + "VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO admin " + "(employee_id,firstName,lastName,gender,phoneNum,position,image,date) " + "VALUES(?,?,?,?,?,?,?,?)";
 
         connect = database.connectDb();
 
@@ -99,21 +99,6 @@ public class dashboardController implements Initializable {
                 alert.setContentText("Пожалуйста, заполните все пустые поля");
                 alert.showAndWait();
             } else {
-
-                String check = "SELECT employee_id FROM employee WHERE employee_id = '" + addEmployee_employeeID.getText() + "'";
-
-                statement = connect.createStatement();
-                result = statement.executeQuery(check);
-
-                if (result.next()) {
-                    alert = new Alert(AlertType.ERROR);
-                    alert.setTitle("Error Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Error");
-                    alert.showAndWait();
-
-                } else {
-
                     prepare = connect.prepareStatement(sql);
                     prepare.setString(1, addEmployee_employeeID.getText());
                     prepare.setString(2, addEmployee_firstName.getText());
@@ -138,7 +123,7 @@ public class dashboardController implements Initializable {
                     addEmployeeShowListData();
                     addEmployeeReset();
 
-                }
+
             }
 
         } catch (Exception e) {
@@ -146,7 +131,6 @@ public class dashboardController implements Initializable {
         }
 
     }
-
     public void addEmployeeUpdate() {
 
         String uri = getData.path;
@@ -155,7 +139,7 @@ public class dashboardController implements Initializable {
         Date date = new Date();
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
-        String sql = "UPDATE employee SET firstName = '" + addEmployee_firstName.getText() + "', lastName = '" + addEmployee_lastName.getText() + "', gender = '" + addEmployee_gender.getSelectionModel().getSelectedItem() + "', phoneNum = '" + addEmployee_phoneNum.getText() + "', position = '" + addEmployee_position.getSelectionModel().getSelectedItem() + "', image = '" + uri + "', date = '" + sqlDate + "' WHERE employee_id ='" + addEmployee_employeeID.getText() + "'";
+        String sql = "UPDATE admin SET firstName = '" + addEmployee_firstName.getText() + "', lastName = '" + addEmployee_lastName.getText() + "', gender = '" + addEmployee_gender.getSelectionModel().getSelectedItem() + "', phoneNum = '" + addEmployee_phoneNum.getText() + "', position = '" + addEmployee_position.getSelectionModel().getSelectedItem() + "', image = '" + uri + "', date = '" + sqlDate + "' WHERE employee_id ='" + addEmployee_employeeID.getText() + "'";
 
         connect = database.connectDb();
 
@@ -178,7 +162,7 @@ public class dashboardController implements Initializable {
                     statement = connect.createStatement();
                     statement.executeUpdate(sql);
 
-                    String updateInfo = "UPDATE employee SET firstName = '" + addEmployee_firstName.getText() + "', lastName = '" + addEmployee_lastName.getText() + "', position = '" + addEmployee_position.getSelectionModel().getSelectedItem() + "' WHERE employee_id = '" + addEmployee_employeeID.getText() + "'";
+                    String updateInfo = "UPDATE admin SET firstName = '" + addEmployee_firstName.getText() + "', lastName = '" + addEmployee_lastName.getText() + "', position = '" + addEmployee_position.getSelectionModel().getSelectedItem() + "' WHERE employee_id = '" + addEmployee_employeeID.getText() + "'";
 
                     prepare = connect.prepareStatement(updateInfo);
                     prepare.executeUpdate();
@@ -205,7 +189,7 @@ public class dashboardController implements Initializable {
 
     public void addEmployeeDelete() {
 
-        String sql = "DELETE FROM employee WHERE employee_id = '" + addEmployee_employeeID.getText() + "'";
+        String sql = "DELETE FROM admin WHERE employee_id = '" + addEmployee_employeeID.getText() + "'";
 
         connect = database.connectDb();
 
@@ -229,7 +213,7 @@ public class dashboardController implements Initializable {
                     statement = connect.createStatement();
                     statement.executeUpdate(sql);
 
-                    String deleteInfo = "DELETE FROM employee WHERE employee_id = '" + addEmployee_employeeID.getText() + "'";
+                    String deleteInfo = "DELETE FROM admin WHERE employee_id = '" + addEmployee_employeeID.getText() + "'";
 
                     prepare = connect.prepareStatement(deleteInfo);
                     prepare.executeUpdate();
@@ -331,7 +315,7 @@ public class dashboardController implements Initializable {
     public ObservableList<employeeData> addEmployeeListData() {
 
         ObservableList<employeeData> listData = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM employee";
+        String sql = "SELECT * FROM admin";
 
         connect = database.connectDb();
 

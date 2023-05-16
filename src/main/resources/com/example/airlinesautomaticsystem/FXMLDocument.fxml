@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -28,7 +29,7 @@
             <Image url="@pic.png" />
          </ImageView>
       </AnchorPane>
-      <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="300.0" styleClass="right-form" stylesheets="@loginDesign.css">
+      <AnchorPane fx:id="adminform" layoutX="300.0" prefHeight="400.0" prefWidth="300.0" styleClass="right-form" stylesheets="@loginDesign.css">
          <Label layoutX="72.0" layoutY="103.0" text="С Возвращением!" textFill="#368981">
             <font>
                <Font name="Tahoma Bold" size="17.0" />
@@ -42,6 +43,23 @@
                <FontAwesomeIcon glyphName="CLOSE" size="1.2em" />
             </graphic>
          </Button>
+         <Hyperlink fx:id="employee_hyperLink" layoutX="42.0" layoutY="366.0" onAction="#switchForm" prefHeight="25.0" prefWidth="214.0" stylesheets="@loginDesign.css" text="Войти в учетную запись сотрудника?" />
       </AnchorPane>
+   </AnchorPane>
+   <AnchorPane fx:id="employee_form" prefHeight="400.0" prefWidth="300.0" styleClass="left-form" stylesheets="@loginDesign.css" visible="false">
+      <Label layoutX="219.0" layoutY="102.0" text="С Возвращением!" textFill="#368981">
+         <font>
+            <Font name="Tahoma Bold" size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="username1" layoutX="183.0" layoutY="142.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Логин" styleClass="textfield" stylesheets="@loginDesign.css" />
+      <PasswordField fx:id="password1" layoutX="183.0" layoutY="183.0" onAction="#loginAdmin" prefHeight="30.0" prefWidth="220.0" promptText="Пароль" styleClass="textfield" stylesheets="@loginDesign.css" />
+      <Button fx:id="loginBtn1" layoutX="183.0" layoutY="236.0" mnemonicParsing="false" onAction="#employeeLogin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@loginDesign.css" text="Вход" />
+      <Button fx:id="close1" layoutX="248.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="58.0" styleClass="close" stylesheets="@loginDesign.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+         <graphic>
+            <FontAwesomeIcon glyphName="CLOSE" size="1.2em" />
+         </graphic>
+      </Button>
+      <Hyperlink fx:id="admin_hyperLink" layoutX="173.0" layoutY="310.0" onAction="#switchForm" prefHeight="23.0" prefWidth="241.0" stylesheets="@loginDesign.css" text="Войти в учетную запись администратора?" />
    </AnchorPane>
 </StackPane>
